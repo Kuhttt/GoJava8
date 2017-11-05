@@ -1,0 +1,1 @@
+ALTER TABLE developers ADD salary decimal (10,2) unsigned;

@@ -1,0 +1,1 @@
+ALTER TABLE projects ADD cost decimal (10,2) unsigned;

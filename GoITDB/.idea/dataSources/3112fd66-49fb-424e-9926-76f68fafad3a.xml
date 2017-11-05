@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="initDB@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="initdb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="companies"/>
+    <table id="8" parent="2" name="companys_projects"/>
+    <table id="9" parent="2" name="customers"/>
+    <table id="10" parent="2" name="customers_projects"/>
+    <table id="11" parent="2" name="developers"/>
+    <table id="12" parent="2" name="developers-skills"/>
+    <table id="13" parent="2" name="developers_projects"/>
+    <table id="14" parent="2" name="projects"/>
+    <table id="15" parent="2" name="skills"/>
+    <view id="16" parent="2" name="a">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="17" parent="2" name="b">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="18" parent="2" name="d">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="19" parent="2" name="dd">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="20" parent="2" name="dpd">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="21" parent="2" name="dpn">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="22" parent="2" name="s">
+      <Comment>VIEW</Comment>
+    </view>
+    <column id="23" parent="7" name="idCompanies">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="7" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="25" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCompanies</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="8" name="idcompanys_projects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="8" name="idCompanys">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="8" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="8" name="comp-projCompFK_idx">
+      <ColNames>idCompanys</ColNames>
+    </index>
+    <index id="30" parent="8" name="comp-projProjFK_idx">
+      <ColNames>idProjects</ColNames>
+    </index>
+    <key id="31" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idcompanys_projects</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="8" name="comp-projCompFK">
+      <ColNames>idCompanys</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>companies</RefTableName>
+      <RefColNames>idCompanies</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="8" name="comp-projProjFK">
+      <ColNames>idProjects</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>projects</RefTableName>
+      <RefColNames>idProjects</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="34" parent="9" name="idCustomers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="36" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCustomers</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="10" name="idcustomers_projects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="10" name="idCustomers">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="10" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="10" name="cust-projCustFK_idx">
+      <ColNames>idCustomers</ColNames>
+    </index>
+    <index id="41" parent="10" name="cust-projProjFK_idx">
+      <ColNames>idProjects</ColNames>
+    </index>
+    <key id="42" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idcustomers_projects</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="43" parent="10" name="cust-projCustFK">
+      <ColNames>idCustomers</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>customers</RefTableName>
+      <RefColNames>idCustomers</RefColNames>
+    </foreign-key>
+    <foreign-key id="44" parent="10" name="cust-projProjFK">
+      <ColNames>idProjects</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>projects</RefTableName>
+      <RefColNames>idProjects</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="45" parent="11" name="idDevelopers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="11" name="salary">
+      <Position>3</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <key id="48" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idDevelopers</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="12" name="idDevelopers-skills">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="12" name="idDevelopers">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="12" name="idSkills">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="12" name="skill-devDevFK_idx">
+      <ColNames>idDevelopers</ColNames>
+    </index>
+    <index id="53" parent="12" name="skill-devSkillFK_idx">
+      <ColNames>idSkills</ColNames>
+    </index>
+    <key id="54" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idDevelopers-skills</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="55" parent="12" name="skill-devDevFK">
+      <ColNames>idDevelopers</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>developers</RefTableName>
+      <RefColNames>idDevelopers</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="56" parent="12" name="skill-devSkillFK">
+      <ColNames>idSkills</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>skills</RefTableName>
+      <RefColNames>idSkills</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="57" parent="13" name="idDevelopers-projects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="13" name="idDevelopers">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="13" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="60" parent="13" name="dev-projDevFK_idx">
+      <ColNames>idDevelopers</ColNames>
+    </index>
+    <index id="61" parent="13" name="dev-projProjFK_idx">
+      <ColNames>idProjects</ColNames>
+    </index>
+    <key id="62" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idDevelopers-projects</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="63" parent="13" name="dev-projDevFK">
+      <ColNames>idDevelopers</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>developers</RefTableName>
+      <RefColNames>idDevelopers</RefColNames>
+    </foreign-key>
+    <foreign-key id="64" parent="13" name="dev-projProjFK">
+      <ColNames>idProjects</ColNames>
+      <RefSchemaName>initdb</RefSchemaName>
+      <RefTableName>projects</RefTableName>
+      <RefColNames>idProjects</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="65" parent="14" name="idProjects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="66" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="14" name="cost">
+      <Position>3</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <key id="68" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idProjects</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="15" name="idSkills">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="71" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idSkills</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="72" parent="16" name="idProjects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="16" name="res">
+      <Position>2</Position>
+      <DataType>decimal(32,2)|0</DataType>
+    </column>
+    <column id="74" parent="17" name="idProjects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="17" name="res">
+      <Position>2</Position>
+      <DataType>decimal(32,2)|0</DataType>
+    </column>
+    <column id="76" parent="18" name="idDevelopers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="18" name="idDevelopers-projects">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="18" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="18" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="18" name="salary">
+      <Position>5</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <column id="81" parent="19" name="idDevelopers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="19" name="idDevelopers-projects">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="19" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="19" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="19" name="salary">
+      <Position>5</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <column id="86" parent="20" name="idDevelopers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="20" name="idDevelopers-projects">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="20" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="89" parent="20" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="20" name="salary">
+      <Position>5</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <column id="91" parent="21" name="idDevelopers">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="21" name="idDevelopers-projects">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="21" name="idProjects">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="21" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="21" name="salary">
+      <Position>5</Position>
+      <DataType>decimal(10,2) unsigned|0</DataType>
+    </column>
+    <column id="96" parent="22" name="idProjects">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="22" name="res">
+      <Position>2</Position>
+      <DataType>decimal(32,2)|0</DataType>
+    </column>
+  </database-model>
+</dataSource>
